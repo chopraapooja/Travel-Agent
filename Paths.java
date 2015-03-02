@@ -5,7 +5,7 @@ class Paths {
 	
 	Paths() {
 		paths.put("Bangalore", new String[]{"Singapore", "Tokyo"});
-		paths.put("Singapore", new String[]{"Bangalore"});
+		paths.put("Singapore", new String[]{});
 		paths.put("Tokyo", new String[]{"Bangalore"});
 	}
 

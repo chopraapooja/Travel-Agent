@@ -3,9 +3,6 @@ import org.junit.Test;
 import org.junit.Rule;
 
 public class PathsTest {
-	private static void foo()throws java.lang.Exception{
-	 throw 	new java.lang.Exception("Pooja");
-	} 
 	@Test
 	public void doesPathsExists_from_Bangalore_to_Singapore_should_give_true() throws Exception {
 		Paths paths = new Paths();
