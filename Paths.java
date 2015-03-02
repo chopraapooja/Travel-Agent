@@ -9,19 +9,30 @@ class Paths {
 		paths.put("Tokyo", new String[]{"Bangalore"});
 	}
 
-	boolean doesPathExists(String from, String to) {
+	boolean doCityExist(String city) {
+		return paths.containsKey(city) ? true : false;
+	}
+
+	boolean doesPathExists(String from, String to) throws Exception {
 		if(paths.containsKey(from)) {
 			for (String destination : paths.get(from)) {
 				if(destination.equals(to)) return true;
 			}
+			return false;
 		}
-		return false;
+		throw new Exception("No city named \""+from+"\" in database");
 	}
 
 	public static void main(String[] args) {
 		Paths paths = new Paths();
 		String from = args[0], to = args[1];
-		boolean result = paths.doesPathExists(from, to);
-		System.out.println(result);
+		try{
+			boolean result = paths.doesPathExists(from, to);
+			System.out.println(result);
+		}
+		catch(Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
 	}
 }
