@@ -1,0 +1,8 @@
+clear
+rm *.class
+echo "compiling ......"
+echo "____________________________________________________"
+javac -cp junit-4.10.jar *.java &&
+echo "running Tests ......" &&
+echo "____________________________________________________" && 
+java -cp ".;junit-4.10.jar" org.junit.runner.JUnitCore $1
