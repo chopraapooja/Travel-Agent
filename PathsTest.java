@@ -1,7 +1,11 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.Rule;
 
 public class PathsTest {
+	private static void foo()throws java.lang.Exception{
+	 throw 	new java.lang.Exception("Pooja");
+	} 
 	@Test
 	public void doesPathsExists_from_Bangalore_to_Singapore_should_give_true() throws Exception {
 		Paths paths = new Paths();
@@ -30,31 +34,14 @@ public class PathsTest {
 		assertTrue(paths.doCityExist("Bangalore"));
 	}
 
-
-	// @Test
-	// public void doesPathsExists_from_Chennai_to_Tokyo_should_throw_Chennai_City_donot_exist_exception (){
-	// 	Paths paths = new Paths();
-	// 	try {
-	// 		paths.doesPathExists("Chennai", "Tokyo");
-	// 	}
-	// 	catch(Exception e) {
-	// 		assertEquals(e.getMessage(), "No city named \"Chennai\" in database");
-	// 	}
-	// }
-	// @Test
-	// public void doesPathsExists_from_Bangalore_to_Stockholm_should_throw_Stockholm_City_donot_exist_exception (){
-	// 	Paths paths = new Paths();
-	// 	try {
-	// 		paths.doesPathExists("Bangalore", "Stockholm");
-	// 	}
-	// 	catch(Exception e) {
-	// 		System.out.println(e.getMessage());
-	// 		assertEquals(e.getMessage(), "No city named \"Stockholm\" in database");
-	// 	}
-	// }
-	// @Test
-	// public void doesPathsExists_from_Bangalore_Stockholm_should_give_false () {
-	// 	Paths paths = new Paths();
-	// 	assertTrue(!paths.doesPathExists("Bangalore", "Stockholm"));
-	// }
+	@Test(expected = java.lang.Exception.class)
+	public void doesPathsExists_from_Chennai_to_Tokyo_should_throw_Chennai_City_donot_exist_exception () throws Exception{
+		Paths paths = new Paths();
+		paths.doesPathExists("Chennai", "Tokyo");	
+	}
+	@Test(expected = java.lang.Exception.class)
+	public void doesPathsExists_from_Bangalore_to_Stockholm_should_throw_Stockholm_City_donot_exist_exception () throws Exception{
+		Paths paths = new Paths();
+		paths.doesPathExists("Bangalore", "Stockholm");
+	}
 }
