@@ -14,13 +14,14 @@ class Paths {
 	}
 
 	boolean doesPathExists(String from, String to) throws Exception {
-		if(paths.containsKey(from)) {
+		String unknownCity = doCityExist(from) ? (doCityExist(to) ? null : to) : from;
+		if(unknownCity == null) {
 			for (String destination : paths.get(from)) {
 				if(destination.equals(to)) return true;
 			}
 			return false;
 		}
-		throw new Exception("No city named \""+from+"\" in database");
+		throw new Exception("No city named \""+unknownCity+"\" in database");
 	}
 
 	public static void main(String[] args) {

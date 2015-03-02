@@ -30,6 +30,7 @@ public class PathsTest {
 		assertTrue(paths.doCityExist("Bangalore"));
 	}
 
+
 	// @Test
 	// public void doesPathsExists_from_Chennai_to_Tokyo_should_throw_Chennai_City_donot_exist_exception (){
 	// 	Paths paths = new Paths();
