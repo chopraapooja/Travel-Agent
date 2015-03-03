@@ -2,7 +2,7 @@ clear
 rm *.class
 echo "compiling ......"
 echo "____________________________________________________"
-javac -cp junit-4.10.jar *.java &&
-echo "running Tests ......" &&
+javac -cp "junit-4.10.jar;json-simple-1.1.1.jar" *.java &&
+echo "running Tests ....." &&
 echo "____________________________________________________" && 
-java -cp ".;junit-4.10.jar" org.junit.runner.JUnitCore $1
+java -cp ".;junit-4.10.jar;json-simple-1.1.1.jar" org.junit.runner.JUnitCore $1

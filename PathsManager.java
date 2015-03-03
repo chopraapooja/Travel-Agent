@@ -17,10 +17,9 @@ class PathsManager {
 
 	}
 	
-	PathsManager(String filePath) throws Exception{
-		System.out.println(filePath);
+	PathsManager(String fileURL) throws Exception{
       	JSONParser parser=new JSONParser();
-		_directPaths = (JSONObject) parser.parse(new FileReader("./paths.txt"));
+		_directPaths = (JSONObject) parser.parse(new FileReader(fileURL));
 	}
 
 	boolean isDirectPathBetween(String src, String dest) {
