@@ -1,78 +1,40 @@
-// import java.util.*;
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+import org.json.simple.parser.ParseException;
+import org.json.simple.parser.JSONParser;
+import java.io.*;
+class JsonDecodeDemo 
+{
+   public static void main(String[] args) 
+   {
+      JSONParser parser=new JSONParser();
+      String s = "{\"0\" : {\"Bangalore\" : 2 } }";
+      try{
+        Object obj = parser.parse(new FileReader("./paths.txt"));
+        JSONObject json = (JSONObject)obj;
+        System.out.println("---------");
+        System.out.println(json.get("Bangalore"));
+        System.out.println("---------");
 
-// class Paths {
-// 	Map<String,String[]> paths = new HashMap<String,String[]>();
-	
-// 	Paths() {
-// 		paths.put("Bangalore", new String[]{"Singapore", "Tokyo"});
-// 		paths.put("Singapore", new String[]{});
-// 		paths.put("Tokyo", new String[]{"Bangalore"});
-// 	}
+         // JSONObject obj2 = (JSONObject)array.get(1);
+         // System.out.println("Field \"1\"");
+         // System.out.println(obj2.get("1"));    
 
-// 	boolean doCityExist(String city) {
-// 		return paths.containsKey(city) ? true : false;
-// 	}
+         // s = "{}";
+         // obj = parser.parse(s);
+         // System.out.println(obj);
 
-// 	boolean doesPathExists(String from, String to) throws Exception {
-// 		String unknownCity = doCityExist(from) ? (doCityExist(to) ? null : to) : from;
-// 		if(unknownCity == null) {
-// 			for (String destination : paths.get(from)) {
-// 				if(destination.equals(to)) return true;
-// 			}
-// 			return false;
-// 		}
-// 		throw new Exception("No city named \""+unknownCity+"\" in database");
-// 	}
+         // s= "[5,]";
+         // obj = parser.parse(s);
+         // System.out.println(obj);
 
-// 	public static void main(String[] args) {
-// 		Paths paths = new Paths();
-// 		String from = args[0], to = args[1];
-// 		try{
-// 			boolean result = paths.doesPathExists(from, to);
-// 			System.out.println(result);
-// 		}
-// 		catch(Exception e) {
-// 			System.out.println(e.getMessage());
-// 		}
-		
-// 	}
-// }
-// -------------------------------------------------------------------------------
-// @Test
-// 	public void doesPathsExists_from_Bangalore_to_Singapore_should_give_true() throws Exception {
-// 		Paths paths = new Paths();
-// 		assertTrue(paths.doesPathExists("Bangalore", "Singapore"));
-// 	}
-// 	@Test
-// 	public void doesPathsExists_from_Bangalore_to_Tokyo_should_give_true () throws Exception {
-// 		Paths paths = new Paths();
-// 		assertTrue(paths.doesPathExists("Bangalore", "Tokyo"));
-// 	}
-// 	@Test
-// 	public void doesPathsExists_from_Tokyo_to_Bangalore_should_give_true () throws Exception {
-// 		Paths paths = new Paths();
-// 		assertTrue(paths.doesPathExists("Tokyo", "Bangalore"));
-// 	}
-
-// 	@Test
-// 	public void doCityExist_should_give_false_when_city_doesnot_exist_in_database () {
-// 		Paths paths = new Paths();
-// 		assertFalse(paths.doCityExist("Chennai"));
-// 	}
-
-// 	@Test
-// 	public void doCityExist_should_give_true_when_city_exists_in_database () {
-// 		Paths paths = new Paths();
-// 		assertTrue(paths.doCityExist("Bangalore"));
-// 	}
-
-// 	@Test(expected = java.lang.Exception.class)
-// 	public void doesPathsExists_from_Chennai_to_Tokyo_should_throw_Chennai_City_donot_exist_exception () throws Exception{
-// 		Paths paths = new Paths();
-// 		paths.doesPathExists("Chennai", "Tokyo");	
-// 	}
-// 	@Test(expected = java.lang.Exception.class)
-// 	public void doesPathsExists_from_Bangalore_to_Stockholm_should_throw_Stockholm_City_donot_exist_exception () throws Exception{
-// 		Paths paths = new Paths();
-// 		paths.doesPathExists("Bangalore", "Stockholm");
-// 	}
+         // s= "[5,,2]";
+         // obj = parser.parse(s);
+         // System.out.println(obj);
+      }catch(Exception pe){
+         // System.out.println("position: " + pe.getPosition());
+      	System.out.println("*********************");
+        System.out.println(pe);
+      }
+   }
+}

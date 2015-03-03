@@ -1,7 +1,11 @@
 import java.util.*;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.ParseException;
+import org.json.simple.parser.JSONParser;
 
 class PathsManager {
 	Map<String, ArrayList> directPaths = new HashMap<String, ArrayList>();
+	JSONObject _directPaths;
 	PathsManager() {
 		directPaths.put("Bangalore", new ArrayList(Arrays.asList("Singapore")));
 		directPaths.put("Singapore", new ArrayList(Arrays.asList("Seoul", "Bangalore")));
@@ -10,6 +14,10 @@ class PathsManager {
 		directPaths.put("Tokyo", new ArrayList(Arrays.asList("Beijing")));
 
 	}
+	PathsManager(String filePath) {
+		System.out.println(filePath);
+	}
+
 	boolean isDirectPathBetween(String src, String dest) {
 		ArrayList directDestinations =  (ArrayList)directPaths.get(src);
 		return directPaths.containsKey(src) && directDestinations.indexOf(dest) != -1; 
@@ -56,13 +64,13 @@ class PathsManager {
 }
 class Spike {	
 	public static void main(String[] args) {
-		PathsManager mgr = new PathsManager();
-		boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "Singapore");
-		System.out.println(isDirectPath);	
-		System.out.println(mgr.getAllSources());
-		System.out.println(mgr.getAllDestinations());
-		System.out.println(mgr.isDestinationAvailable("Singapore"));
-		System.out.println(mgr.findPathBetween("Bangalore","Tokyo", new ArrayList()));
+		PathsManager mgr = new PathsManager("./paths.txt");
+		// boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "Singapore");
+		// System.out.println(isDirectPath);	
+		// System.out.println(mgr.getAllSources());
+		// System.out.println(mgr.getAllDestinations());
+		// System.out.println(mgr.isDestinationAvailable("Singapore"));
+		// System.out.println(mgr.findPathBetween("Bangalore","Tokyo", new ArrayList()));
 
 	}
 }

@@ -1,0 +1,7 @@
+{
+	"Bangalore" : ["Singapore"],
+	"Singapore" : ["Seoul", "Bangalore"],
+	"Seoul" : ["Beijing", "Singapore"],
+	"Beijing" : ["Tokyo", "Seoul"],
+	"Tokyo" : ["Beijing"]
+}
