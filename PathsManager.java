@@ -28,7 +28,7 @@ class PathsManager {
 	}
 
 	Set<String> getAllSources() {
-		return directPaths.keySet();
+		return _directPaths.keySet();
 	}
 
 	Collection<ArrayList> getAllDestinations() {
@@ -72,11 +72,11 @@ class Spike {
 			PathsManager mgr = new PathsManager("./paths.txt");
 			boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "Singapore");
 			System.out.println(isDirectPath);	
+			System.out.println(mgr.getAllSources());
 		}
 		catch(Exception e) {
 			System.out.println(e);
 		}
-		// System.out.println(mgr.getAllSources());
 		// System.out.println(mgr.getAllDestinations());
 		// System.out.println(mgr.isDestinationAvailable("Singapore"));
 		// System.out.println(mgr.findPathBetween("Bangalore","Tokyo", new ArrayList()));
