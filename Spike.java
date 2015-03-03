@@ -1,56 +1,78 @@
-import java.util.*;
+// import java.util.*;
 
-class PathsManager {
-	Map<String, ArrayList> directPaths = new HashMap<String, ArrayList>();
-	PathsManager() {
-		directPaths.put("Bangalore", new ArrayList(Arrays.asList("Singapore")));
-		directPaths.put("Singapore", new ArrayList(Arrays.asList("Seoul", "Bangalore")));
-		directPaths.put("Seoul", new ArrayList(Arrays.asList("Beijing", "Singapore")));
-		directPaths.put("Beijing", new ArrayList(Arrays.asList("Tokyo", "Seoul")));
-		directPaths.put("Tokyo", new ArrayList(Arrays.asList("Beijing")));
+// class Paths {
+// 	Map<String,String[]> paths = new HashMap<String,String[]>();
+	
+// 	Paths() {
+// 		paths.put("Bangalore", new String[]{"Singapore", "Tokyo"});
+// 		paths.put("Singapore", new String[]{});
+// 		paths.put("Tokyo", new String[]{"Bangalore"});
+// 	}
 
-	}
-	boolean isDirectPathBetween(String src, String dest) {
-		ArrayList directDestinations =  (ArrayList)directPaths.get(src);
-		return directPaths.containsKey(src) && directDestinations.indexOf(dest) != -1; 
-	}
+// 	boolean doCityExist(String city) {
+// 		return paths.containsKey(city) ? true : false;
+// 	}
 
-	Set<String> getAllSources() {
-		return directPaths.keySet();
-	}
+// 	boolean doesPathExists(String from, String to) throws Exception {
+// 		String unknownCity = doCityExist(from) ? (doCityExist(to) ? null : to) : from;
+// 		if(unknownCity == null) {
+// 			for (String destination : paths.get(from)) {
+// 				if(destination.equals(to)) return true;
+// 			}
+// 			return false;
+// 		}
+// 		throw new Exception("No city named \""+unknownCity+"\" in database");
+// 	}
 
-	Collection<ArrayList> getAllDestinations() {
-		return directPaths.values();
-	}
+// 	public static void main(String[] args) {
+// 		Paths paths = new Paths();
+// 		String from = args[0], to = args[1];
+// 		try{
+// 			boolean result = paths.doesPathExists(from, to);
+// 			System.out.println(result);
+// 		}
+// 		catch(Exception e) {
+// 			System.out.println(e.getMessage());
+// 		}
+		
+// 	}
+// }
+// -------------------------------------------------------------------------------
+// @Test
+// 	public void doesPathsExists_from_Bangalore_to_Singapore_should_give_true() throws Exception {
+// 		Paths paths = new Paths();
+// 		assertTrue(paths.doesPathExists("Bangalore", "Singapore"));
+// 	}
+// 	@Test
+// 	public void doesPathsExists_from_Bangalore_to_Tokyo_should_give_true () throws Exception {
+// 		Paths paths = new Paths();
+// 		assertTrue(paths.doesPathExists("Bangalore", "Tokyo"));
+// 	}
+// 	@Test
+// 	public void doesPathsExists_from_Tokyo_to_Bangalore_should_give_true () throws Exception {
+// 		Paths paths = new Paths();
+// 		assertTrue(paths.doesPathExists("Tokyo", "Bangalore"));
+// 	}
 
-	String findPathBetween(String src, String dest, ArrayList<String> visited) {
-		if (isDirectPathBetween(src, dest)) return src +"->"+ dest;
-		visited.add(src);
-		for (Object key : directPaths.get(src)) {
-			if(visited.indexOf(key) == -1) {
-				return src +"->"+ findPathBetween((String)key, dest, visited);  	
-			}
-		}
-		return null;
-	}
+// 	@Test
+// 	public void doCityExist_should_give_false_when_city_doesnot_exist_in_database () {
+// 		Paths paths = new Paths();
+// 		assertFalse(paths.doCityExist("Chennai"));
+// 	}
 
-	boolean isDestinationAvailable(String destination) {
-		Collection<ArrayList> destLists= getAllDestinations();
-		for (ArrayList destList : destLists) {
-			if (destList.contains(destination)) return true;
-		}
-		return false;
-	}
-}
-class Spike {	
-	public static void main(String[] args) {
-		PathsManager mgr = new PathsManager();
-		boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "Singapore");
-		System.out.println(isDirectPath);	
-		System.out.println(mgr.getAllSources());
-		System.out.println(mgr.getAllDestinations());
-		System.out.println(mgr.isDestinationAvailable("Singapore"));
-		System.out.println(mgr.findPathBetween("Tokyo", "Bangalore", new ArrayList()));
+// 	@Test
+// 	public void doCityExist_should_give_true_when_city_exists_in_database () {
+// 		Paths paths = new Paths();
+// 		assertTrue(paths.doCityExist("Bangalore"));
+// 	}
 
-	}
-}
+// 	@Test(expected = java.lang.Exception.class)
+// 	public void doesPathsExists_from_Chennai_to_Tokyo_should_throw_Chennai_City_donot_exist_exception () throws Exception{
+// 		Paths paths = new Paths();
+// 		paths.doesPathExists("Chennai", "Tokyo");	
+// 	}
+// 	@Test(expected = java.lang.Exception.class)
+// 	public void doesPathsExists_from_Bangalore_to_Stockholm_should_throw_Stockholm_City_donot_exist_exception () throws Exception{
+// 		Paths paths = new Paths();
+// 		paths.doesPathExists("Bangalore", "Stockholm");
+// 	}
