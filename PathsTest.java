@@ -1,32 +1,31 @@
 import static org.junit.Assert.*;
 import org.junit.Test;
+import org.junit.Before;
 import java.util.*;
 
 public class PathsTest {
+	PathsManager mgr = new PathsManager();
+	
 	@Test
 	public void isDirectPathBetween_Bangalore_and_Singapore_should_be_true(){
-		PathsManager mgr = new PathsManager();
 		boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "Singapore");
 		assertTrue(isDirectPath);
 	}
 	
 	@Test
 	public void isDirectPathBetween_Bangalore_and_Tokyo_should_give_false(){
-		PathsManager mgr = new PathsManager();
 		boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "Tokyo");
 		assertFalse(isDirectPath);
 	}
 
 	@Test
 	public void isDirectPathBetween_Bangalore_and_UnknownCity_should_give_false(){
-		PathsManager mgr = new PathsManager();
 		boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "UnknownCity");
 		assertFalse(isDirectPath);
 	}
 
 	@Test
 	public void isDirectPathBetween_UnknownCity1_and_UnknownCity2_should_give_false(){
-		PathsManager mgr = new PathsManager();
 		boolean isDirectPath = mgr.isDirectPathBetween("UnknownCity1", "UnknownCity2");
 		assertFalse(isDirectPath);
 	}
