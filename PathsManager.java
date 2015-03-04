@@ -66,21 +66,25 @@ class PathsManager {
 		return _directPaths.containsKey(src);
 	}
 }
-class Spike {	
+class Path {	
 	public static void main(String[] args) {
+		String fileURL = null;
 		try {
-			PathsManager mgr = new PathsManager("./paths.txt");
-			boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "Singapore");
-			System.out.println(isDirectPath);	
-			System.out.println(mgr.getAllSources());
-			System.out.println(mgr.getAllDestinations());
-			System.out.println(mgr.isDestinationAvailable("Singapore"));
-			System.out.println(mgr.findPathBetween("Chennai","Tokyo", new ArrayList()));
+			fileURL = args[0].equals("-f") ? args[1] : null;
+			String src,dest;
+			src = args[2];
+			dest = args[3];
+			PathsManager mgr = new PathsManager(fileURL);
+			System.out.println(mgr.findPathBetween(src,dest, new ArrayList()));
+		}
+		catch(FileNotFoundException e) {
+			System.out.println("No database named "+fileURL+" found.");
 		}
 		catch(Exception e) {
 			System.out.println(e);
 			e.printStackTrace();
 		}
+
 
 	}
 }
