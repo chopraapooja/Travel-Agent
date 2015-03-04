@@ -10,10 +10,9 @@ class PathsManager {
 	JSONObject _directPaths;
 	PathsManager() {
 		directPaths.put("Bangalore", new ArrayList(Arrays.asList("Singapore")));
-		directPaths.put("Singapore", new ArrayList(Arrays.asList("Seoul", "Bangalore")));
-		directPaths.put("Seoul", new ArrayList(Arrays.asList("Beijing", "Singapore")));
-		directPaths.put("Beijing", new ArrayList(Arrays.asList("Tokyo", "Seoul")));
-		directPaths.put("Tokyo", new ArrayList(Arrays.asList("Beijing")));
+		directPaths.put("Singapore", new ArrayList(Arrays.asList("Seoul", "Dubai")));
+		directPaths.put("Seoul", new ArrayList(Arrays.asList("Beijing")));
+		directPaths.put("Beijing", new ArrayList(Arrays.asList("Tokyo")));
 
 	}
 	
@@ -84,7 +83,5 @@ class Path {
 			System.out.println(e);
 			e.printStackTrace();
 		}
-
-
 	}
 }
