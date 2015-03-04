@@ -32,7 +32,7 @@ class PathsManager {
 	}
 
 	Collection<ArrayList> getAllDestinations() {
-		return directPaths.values();
+		return _directPaths.values();
 	}
 
 	String findPathBetween(String src, String dest, ArrayList<String> visited) {
@@ -46,7 +46,7 @@ class PathsManager {
 			return src +"->"+ dest;	
 		} 
 		visited.add(src);
-		for (Object key : directPaths.get(src)) {
+		for (Object key : ((JSONArray)(_directPaths.get(src)))) 	{
 			if(visited.indexOf(key) == -1) {
 				return src +"->"+ findPathBetween((String)key, dest, visited);  	
 			}
@@ -63,7 +63,7 @@ class PathsManager {
 	}
 
 	boolean isSourceAvailable(String src) {
-		return directPaths.containsKey(src);
+		return _directPaths.containsKey(src);
 	}
 }
 class Spike {	
@@ -73,13 +73,14 @@ class Spike {
 			boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "Singapore");
 			System.out.println(isDirectPath);	
 			System.out.println(mgr.getAllSources());
+			System.out.println(mgr.getAllDestinations());
+			System.out.println(mgr.isDestinationAvailable("Singapore"));
+			System.out.println(mgr.findPathBetween("Chennai","Tokyo", new ArrayList()));
 		}
 		catch(Exception e) {
 			System.out.println(e);
+			e.printStackTrace();
 		}
-		// System.out.println(mgr.getAllDestinations());
-		// System.out.println(mgr.isDestinationAvailable("Singapore"));
-		// System.out.println(mgr.findPathBetween("Bangalore","Tokyo", new ArrayList()));
 
 	}
 }
