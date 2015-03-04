@@ -63,11 +63,23 @@ class PathsManager {
 	boolean doExistsAsSource(String city) {
 		return directPaths.containsKey(city);
 	}
+
+	boolean doExists(String city) {
+		return doExistsAsSource(city) || doExistsAsDestination(city);
+	}
 }
 class Path {	
 	public static void main(String[] args) {
 		String src = args[0];
 		String dest = args[1];
+		PathsManager mgr = new PathsManager();
+		String invalidCity = mgr.doExists(src) ? (mgr.doExists(dest) ? null : dest) : src; 
+		if(invalidCity != null) {
+			System.out.println("No city named \""+invalidCity+"\" found in database.");
+		}
+		else {
+			System.out.println(mgr.isDirectPathBetween(src,dest));
+		}
 		// String fileURL = null;
 		// try {
 		// 	fileURL = args[0].equals("-f") ? args[1] : null;
