@@ -52,16 +52,16 @@ class PathsManager {
 	// 	return null;
 	// }
 
-	boolean doExistsAsDestination(String destination) {
+	boolean doExistsAsDestination(String city) {
 		Collection<ArrayList> destLists= getAllDestinations();
 		for (ArrayList destList : destLists) {
-			if (destList.contains(destination)) return true;
+			if (destList.contains(city)) return true;
 		}
 		return false;
 	}
 
-	boolean doExistsAsSource(String cityName) {
-		return directPaths.containsKey(cityName);
+	boolean doExistsAsSource(String city) {
+		return directPaths.containsKey(city);
 	}
 }
 class Path {	
