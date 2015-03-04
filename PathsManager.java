@@ -60,12 +60,14 @@ class PathsManager {
 	// 	return false;
 	// }
 
-	// boolean isSourceAvailable(String src) {
-	// 	return _directPaths.containsKey(src);
-	// }
+	boolean doExistsAsSource(String cityName) {
+		return directPaths.containsKey(cityName);
+	}
 }
 class Path {	
 	public static void main(String[] args) {
+		String src = args[0];
+		String dest = args[1];
 		// String fileURL = null;
 		// try {
 		// 	fileURL = args[0].equals("-f") ? args[1] : null;

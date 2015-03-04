@@ -30,6 +30,23 @@ public class PathsTest {
 		assertFalse(isDirectPath);
 	}
 
+	@Test
+	public void doExistsAsSource_Bangalore_should_give_true() {
+		boolean isAvailable = mgr.doExistsAsSource("Bangalore");
+		assertTrue(isAvailable);
+	}
+
+	@Test
+	public void doExistsAsSource_Dubai_should_give_false() {
+		boolean isAvailable = mgr.doExistsAsSource("Dubai");
+		assertFalse(isAvailable);
+	}
+
+	@Test
+	public void doExistsAsSource_UNKNOWN_should_give_false() {
+		boolean isAvailable = mgr.doExistsAsSource("UNKNOWN");
+		assertFalse(isAvailable);
+	}
 	// @Test
 	// public void getAllSources_should_give_all_source_cities()throws Exception{
 	// 	PathsManager mgr = new PathsManager("./paths.txt");
