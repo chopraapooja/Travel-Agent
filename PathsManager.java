@@ -29,9 +29,9 @@ class PathsManager {
 	// 	return _directPaths.keySet();
 	// }
 
-	// Collection<ArrayList> getAllDestinations() {
-	// 	return _directPaths.values();
-	// }
+	Collection<ArrayList> getAllDestinations() {
+		return directPaths.values();
+	}
 
 	// String findPathBetween(String src, String dest, ArrayList<String> visited) {
 	// 	if(!isSourceAvailable(src)) {
@@ -52,13 +52,13 @@ class PathsManager {
 	// 	return null;
 	// }
 
-	// boolean isDestinationAvailable(String destination) {
-	// 	Collection<ArrayList> destLists= getAllDestinations();
-	// 	for (ArrayList destList : destLists) {
-	// 		if (destList.contains(destination)) return true;
-	// 	}
-	// 	return false;
-	// }
+	boolean doExistsAsDestination(String destination) {
+		Collection<ArrayList> destLists= getAllDestinations();
+		for (ArrayList destList : destLists) {
+			if (destList.contains(destination)) return true;
+		}
+		return false;
+	}
 
 	boolean doExistsAsSource(String cityName) {
 		return directPaths.containsKey(cityName);

@@ -19,14 +19,14 @@ public class PathsTest {
 	}
 
 	@Test
-	public void isDirectPathBetween_Bangalore_and_UnknownCity_should_give_false(){
-		boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "UnknownCity");
+	public void isDirectPathBetween_Bangalore_and_GUMNAMCity_should_give_false(){
+		boolean isDirectPath = mgr.isDirectPathBetween("Bangalore", "GUMNAMCity");
 		assertFalse(isDirectPath);
 	}
 
 	@Test
-	public void isDirectPathBetween_UnknownCity1_and_UnknownCity2_should_give_false(){
-		boolean isDirectPath = mgr.isDirectPathBetween("UnknownCity1", "UnknownCity2");
+	public void isDirectPathBetween_GUMNAMCity1_and_GUMNAMCity2_should_give_false(){
+		boolean isDirectPath = mgr.isDirectPathBetween("GUMNAMCity1", "GUMNAMCity2");
 		assertFalse(isDirectPath);
 	}
 
@@ -43,8 +43,8 @@ public class PathsTest {
 	}
 
 	@Test
-	public void doExistsAsSource_UNKNOWN_should_give_false() {
-		boolean isAvailable = mgr.doExistsAsSource("UNKNOWN");
+	public void doExistsAsSource_GUMNAM_should_give_false() {
+		boolean isAvailable = mgr.doExistsAsSource("GUMNAM");
 		assertFalse(isAvailable);
 	}
 	// @Test
@@ -54,11 +54,20 @@ public class PathsTest {
 	// 	Set<String> expected = new HashSet(Arrays.asList("Bangalore", "Singapore", "Seoul", "Beijing", "Tokyo"));
 	// 	assertTrue(sources.equals(expected));		
 	// }
-	// @Test
-	// public void isDestinationAvailable_of_Bangalore_should_give_true()throws Exception{
-	// 	PathsManager mgr = new PathsManager("./paths.txt");
-	// 	assertTrue(mgr.isDestinationAvailable("Bangalore"));
-	// }
+	@Test
+	public void doExistsAsDestination_Singapore_should_give_true()throws Exception{
+		assertTrue(mgr.doExistsAsDestination("Singapore"));
+	}	
+
+	@Test
+	public void doExistsAsDestination_Bangalore_should_give_false()throws Exception{
+		assertFalse(mgr.doExistsAsDestination("Bangalore"));
+	}
+
+	@Test
+	public void doExistsAsDestination_GUMNAM_should_give_false()throws Exception{
+		assertFalse(mgr.doExistsAsDestination("GUMNAM"));
+	}
 	// @Test
 	// public void isDestinationAvailable_of_Chennai_should_give_false()throws Exception{
 	// 	PathsManager mgr = new PathsManager("./paths.txt");
