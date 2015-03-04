@@ -55,17 +55,17 @@ public class PathsTest {
 	// 	assertTrue(sources.equals(expected));		
 	// }
 	@Test
-	public void doExistsAsDestination_Singapore_should_give_true()throws Exception{
+	public void doExistsAsDestination_Singapore_should_give_true() {
 		assertTrue(mgr.doExistsAsDestination("Singapore"));
 	}	
 
 	@Test
-	public void doExistsAsDestination_Bangalore_should_give_false()throws Exception{
+	public void doExistsAsDestination_Bangalore_should_give_false() {
 		assertFalse(mgr.doExistsAsDestination("Bangalore"));
 	}
 
 	@Test
-	public void doExistsAsDestination_GUMNAM_should_give_false()throws Exception{
+	public void doExistsAsDestination_GUMNAM_should_give_false() {
 		assertFalse(mgr.doExistsAsDestination("GUMNAM"));
 	}
 	// @Test
